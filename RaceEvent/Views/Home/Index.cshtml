@@ -1,0 +1,37 @@
+﻿@model IEnumerable<RaceEvent.Models.Race>
+
+@{
+    ViewBag.Title = "City Run";
+}
+
+<div class="row" style="padding-top:55px">
+    <h1>
+        <label id="eventName"></label>
+    </h1>
+    <h1>
+        <label id="eventCity"></label>  <label id="eventCountry"></label>
+    </h1>
+    <h1>
+        <label id="eventDate"></label>
+    </h1>
+    <hr />
+    <h1>
+        Races
+    </h1>
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4" style="align-content:center">
+            <h2>
+                @Html.DisplayFor(modelItem => item.Name)
+            </h2>
+            <h2>
+                Distance in meters:
+                @Html.DisplayFor(modelItem => item.DistanceInMeter)
+            </h2>
+            <h2>
+                @Html.ActionLink("Classifications", "Classification", new { raceId = item.Id, raceName = item.Name })
+            </h2>
+        </div>
+    }
+</div>

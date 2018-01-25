@@ -1,0 +1,79 @@
+﻿@model IEnumerable<RaceEvent.Models.Classification>
+
+@{
+    ViewBag.Title = "Classifications";
+}
+<div style="width:100%; background-color:lightgray; padding-top:55px">
+    <h3>@Html.ActionLink("Back to Races", "Index") | Classifications for Race: @ViewBag.RaceName </h3>
+
+    <table class="table" style="height:200px; overflow-y:auto;">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bib)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rank)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr style="background-color:gray">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bib)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rank)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <table>
+                        <tr>
+                            <th colspan="4">
+                                Splits
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Distance In Meter
+                            </th>
+                            <th>
+                                Cumulative Time
+                            </th>
+                            <th>
+                                Speed In Kmh
+                            </th>
+                        </tr>
+                        @foreach (var split in item.Splits)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(splitItem => split.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(splitItem => split.DistanceInMeter)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(splitItem => split.CumulativeTime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(splitItem => split.SpeedInKmh)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
